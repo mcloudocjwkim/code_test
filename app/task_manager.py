@@ -28,6 +28,8 @@ class TaskManager:
             json.dump(tasks, file, ensure_ascii=False, indent=2)
 
     def add(self, title):
+        if not title.strip():
+            raise ValueError("할 일 제목은 비어 있을 수 없습니다.")
         tasks = self._load()
 
         next_id = max(
